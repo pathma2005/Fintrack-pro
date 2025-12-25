@@ -1,0 +1,35 @@
+
+.navbar{
+  box-shadow: 0 10px 40px rgba(120, 90, 255, 0.2);
+  border: 1px solid #7d21d3c0;
+  background-color: rgba(69, 59, 180, 0.911);
+  backdrop-filter: blur(50px);
+  padding: 1rem 1.5rem;
+  position: sticky;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+  justify-content: space-between;
+}
+.logo{
+  color:rgb(216, 209, 209);
+  font-weight: 500;
+  font-size: 1.2rem;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 100;
+}
+
+.link{
+  opacity:o.8;
+  cursor: pointer;
+}
+
+.link:hover{
+  opacity: 1;
+  transition: all 0.3s;
+}
+

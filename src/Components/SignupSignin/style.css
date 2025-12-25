@@ -1,0 +1,148 @@
+.signupwrapper {
+  width: 50%;
+  max-width: 400px;
+  margin: 4rem auto;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 40px rgba(120, 90, 255, 0.2);
+  border: 1px solid rgba(138, 43, 226, 0.08);
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.signup-title {
+  text-align: center;
+  color: #d8e0e9;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.input-group input {
+  padding: 0.7rem 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid #e0e0e0;
+  font-size: 1rem;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #6a0dad;
+  box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.1);
+}
+
+.signup-btn {
+  margin-top: 1rem;
+  padding: 0.7rem;
+  font-size: 1.1rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  color: white;
+  background: linear-gradient(135deg, #6a0dad, #2970ff);
+  box-shadow: 0 6px 20px rgba(138, 43, 226, 0.3);
+}
+
+.signup-btn:hover {
+  transform: translateY(-2px);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #ddd;
+}
+
+.divider span {
+  padding: 0 1rem;
+  color: #777;
+}
+
+.google-btn {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 0.5rem;
+  border: 2px solid #e0e0e0;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.google-btn:hover {
+  border-color: #6a0dad;
+}
+
+.google-logo {
+  width: 20px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .signupwrapper {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .signupwrapper {
+    width: 95%;
+    padding: 1.5rem;
+  }
+  .signup-title {
+    font-size: 1.8rem;
+  }
+  .input-group input {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  .signup-btn {
+    padding: 0.6rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .signupwrapper {
+    width: 98%;
+    padding: 1rem;
+  }
+  .signup-title {
+    font-size: 1.6rem;
+  }
+  .input-group input {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.85rem;
+  }
+  .signup-btn {
+    padding: 0.5rem;
+    font-size: 0.95rem;
+  }
+}
+
+
