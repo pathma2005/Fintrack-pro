@@ -1,4 +1,5 @@
 
+
 .navbar{
   box-shadow: 0 10px 40px rgba(120, 90, 255, 0.2);
   border: 1px solid #7d21d3c0;
@@ -32,4 +33,3 @@
   opacity: 1;
   transition: all 0.3s;
 }
-

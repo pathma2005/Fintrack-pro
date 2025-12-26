@@ -101,6 +101,57 @@
 .google-logo {
   width: 20px;
 }
+.already-account {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 14px;
+  color: #131313;
+}
+
+.login-link {
+  color: #edf3ff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
+.login-page {
+  width: 100vw;
+  height: 100vh;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-page {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.forgot-password {
+  margin-top: 14px;
+  text-align: center;
+  color: #edf3ff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
 
 /* Mobile */
 @media (max-width: 768px) {
@@ -144,5 +195,7 @@
     font-size: 0.95rem;
   }
 }
+
+
 
 
