@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
+import Header from "../Components/Header";
+import Cards from "../Components/Cards";
+
 
 function Dashboard() {
+
   return (
-    <div>dashboard</div>
-  )
+    <div>
+      <Header />
+      <Cards/>
+    </div>
+  );
 }
 
-export default Dashboard
+export default Dashboard;
+

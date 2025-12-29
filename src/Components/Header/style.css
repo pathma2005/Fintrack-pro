@@ -1,6 +1,4 @@
-
-
-.navbar{
+.navbar {
   box-shadow: 0 10px 40px rgba(120, 90, 255, 0.2);
   border: 1px solid #7d21d3c0;
   background-color: rgba(69, 59, 180, 0.911);
@@ -12,24 +10,26 @@
   display: flex;
   align-items: center;
   z-index: 100;
-  justify-content: space-between;
+  justify-content: center;
+  position: relative;    
 }
-.logo{
-  color:rgb(216, 209, 209);
+
+.logo {
+  color: rgb(216, 209, 209);
   font-weight: 500;
   font-size: 1.2rem;
-  align-items: center;
-  justify-content: center;
   margin: 0;
-  padding: 100;
+  padding: 5px;
+  text-align: center;
 }
-
-.link{
-  opacity:o.8;
+.link {
+  opacity: 0.8;
   cursor: pointer;
+  position: absolute;
+  right: 20px;
 }
 
-.link:hover{
+.link:hover {
   opacity: 1;
   transition: all 0.3s;
 }

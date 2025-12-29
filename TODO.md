@@ -1,13 +1,10 @@
-# TODO for Fixing All Code Issues
+# TODO List for Google Login Fix
 
-## Tasks
-- [x] Remove unused analytics line in my-react-app/src/firebase.js
-- [x] Add background-image to .signupwrapper in my-react-app/src/Components/SignupSignin/style.css
-- [x] Remove background style from JSX in my-react-app/src/pages/Signup.js
-- [ ] Test the app to ensure it works
+## Completed Tasks
+- [x] Update firebase.js to prompt for account selection (added provider.setCustomParameters({ prompt: 'select_account' }))
+- [x] Modify SignupSignin/index.js to check for existing users before creating a new account (added getDoc check and "Email already exists" error)
 
-## Notes
-- Removed const analytics = getAnalytics(app); and import from firebase.js
-- Added background-image properties to .signupwrapper
-- Removed style prop and img2 import from Signup.js
-- Ensure app runs without errors
+## Followup Steps
+- [ ] Test the changes by running the app and attempting Google signup with an existing email
+- [ ] Verify that the account selection prompt appears instead of 2FA
+- [ ] Ensure login functionality still works correctly

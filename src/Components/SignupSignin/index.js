@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { auth, provider, db } from "../../firebase";
-import {
-  createUserWithEmailAndPassword,
-  signInWithPopup,
-} from "firebase/auth";
-import { doc, setDoc, serverTimestamp } from "firebase/firestore";
+import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -19,6 +17,14 @@ function SignupSigninComponents() {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+  const [user, authLoading] = useAuthState(auth);
+
+  // Redirect if already logged in
+  useEffect(() => {
+    if (!authLoading && user) {
+      navigate("/dashboard");
+    }
+  }, [user, authLoading, navigate]);
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -35,12 +41,7 @@ function SignupSigninComponents() {
 
     setLoading(true);
     try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
       await setDoc(doc(db, "users", user.uid), {
@@ -54,12 +55,10 @@ function SignupSigninComponents() {
       toast.success("User created successfully");
       navigate("/dashboard");
     } catch (error) {
-      toast.error(
-        error.code.replace("auth/", "").replaceAll("-", " ")
-      );
+      toast.error(error.code.replace("auth/", "").replaceAll("-", " "));
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   const handleGoogleSignup = async () => {
@@ -69,25 +68,29 @@ function SignupSigninComponents() {
     try {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
+      const userDocRef = doc(db, "users", user.uid);
+      const userDocSnap = await getDoc(userDocRef);
 
-      await setDoc(doc(db, "users", user.uid), {
-        name: user.displayName,
-        email: user.email,
-        uid: user.uid,
-        photoURL: user.photoURL,
-        createdAt: serverTimestamp(),
-      });
+      if (!userDocSnap.exists()) {
+        await setDoc(userDocRef, {
+          name: user.displayName,
+          email: user.email,
+          uid: user.uid,
+          photoURL: user.photoURL,
+          createdAt: serverTimestamp(),
+        });
+        toast.success("Signed up with Google");
+      }
 
-      toast.success("Signed up with Google");
       navigate("/dashboard");
     } catch (error) {
-      toast.error(
-        error.code.replace("auth/", "").replaceAll("-", " ")
-      );
+      toast.error(error.code.replace("auth/", "").replaceAll("-", " "));
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
+
+  if (authLoading) return <div>Loading...</div>;
 
   return (
     <div className="signupwrapper">
@@ -103,6 +106,7 @@ function SignupSigninComponents() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Enter Your Name"
+            disabled={loading}
           />
         </div>
 
@@ -113,6 +117,7 @@ function SignupSigninComponents() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter Your Email"
+            disabled={loading}
           />
         </div>
 
@@ -123,6 +128,7 @@ function SignupSigninComponents() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter Password"
+            disabled={loading}
           />
         </div>
 
@@ -132,7 +138,8 @@ function SignupSigninComponents() {
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            placeholder="Enter confirm password"
+            placeholder="Enter Confirm Password"
+            disabled={loading}
           />
         </div>
 
@@ -145,25 +152,19 @@ function SignupSigninComponents() {
         <span>or</span>
       </div>
 
-      <button
-        className="google-btn"
-        onClick={handleGoogleSignup}
-        disabled={loading}
-      >
-        <img
+      <button className="google-btn" onClick={handleGoogleSignup} disabled={loading}>
+              <img
           src="/assets/google-logo.png"
           alt="Google"
           className="google-logo"
         />
+
         Sign up with Google
       </button>
 
       <p className="already-account">
         Already have an account?{" "}
-        <span
-          className="login-link"
-          onClick={() => navigate("/login")}
-        >
+        <span className="login-link" onClick={() => navigate("/login")}>
           Login
         </span>
       </p>
@@ -172,5 +173,8 @@ function SignupSigninComponents() {
 }
 
 export default SignupSigninComponents;
+
+
+
 
 
