@@ -21,6 +21,7 @@ function SignUp() {
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
+    overflow: "hidden",
   }}
 >
   <SignupSigninComponents />
