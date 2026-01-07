@@ -1,10 +1,10 @@
-# TODO List for Google Login Fix
+# Financial Tracker Implementation Plan
 
-## Completed Tasks
-- [x] Update firebase.js to prompt for account selection (added provider.setCustomParameters({ prompt: 'select_account' }))
-- [x] Modify SignupSignin/index.js to check for existing users before creating a new account (added getDoc check and "Email already exists" error)
-
-## Followup Steps
-- [ ] Test the changes by running the app and attempting Google signup with an existing email
-- [ ] Verify that the account selection prompt appears instead of 2FA
-- [ ] Ensure login functionality still works correctly
+## Tasks
+- [ ] Install Recharts library for charts
+- [ ] Create Graph component (line chart for income/expenses over time)
+- [ ] Create PieChart component (pie chart for expense categories)
+- [ ] Update Dashboard to render Graph and PieChart components
+- [ ] Update Cards component to fetch and display dynamic transaction data
+- [ ] Ensure single data source: Create/use Firebase transactions collection
+- [ ] Test app functionality and data flow
