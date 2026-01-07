@@ -93,6 +93,7 @@ function Dashboard() {
     const spendingData = {};
 
     transactions.forEach((transaction) => {
+      if (!transaction.amount || isNaN(transaction.amount)) return; // Skip invalid amounts
       const monthYear = moment(transaction.date).format("MMM YYYY");
       const tag = transaction.tag;
 
@@ -122,7 +123,7 @@ function Dashboard() {
     const spendingDataArray = Object.keys(spendingData).map((key) => ({
       category: key,
       value: spendingData[key],
-    }));
+    })).filter(item => !isNaN(item.value)); // Filter out NaN values
 
     return { balanceData, spendingDataArray };
   };
@@ -133,12 +134,37 @@ function Dashboard() {
     data: balanceData,
     xField: "month",
     yField: "balance",
+    color: (data) => (data.balance >= 0 ? "#52c41a" : "#ff4d4f"), // Green for positive, red for negative
+    tooltip: {
+      showMarkers: true,
+      showCrosshairs: true,
+    },
+    legend: {
+      position: "top",
+    },
   };
 
   const spendingConfig = {
     data: spendingDataArray,
     angleField: "value",
     colorField: "category",
+    color: ["#ff6384", "#36a2eb", "#cc65fe", "#ffce56", "#ff9f40", "#4bc0c0", "#9966ff"],
+    tooltip: {
+      showTitle: true,
+      showMarkers: true,
+    },
+    label: {
+      type: "outer",
+      offset: 10,
+      content: ({ value }) => `${value}`,
+      style: {
+        textAlign: "center",
+        fontSize: 14,
+      },
+    },
+    legend: {
+      position: "bottom",
+    },
   };
 
   const cardStyle = {
