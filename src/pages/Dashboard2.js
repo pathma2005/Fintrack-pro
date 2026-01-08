@@ -12,19 +12,18 @@ function Dashboard2() {
   const [openIncome, setOpenIncome] = useState(false);
   const [openExpense, setOpenExpense] = useState(false);
 
-  /* 🔹 Load data */
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("transactions")) || [];
     setTransactions(data);
   }, []);
 
-  /* 🔹 Save data */
+
   const saveTransactions = (data) => {
     localStorage.setItem("transactions", JSON.stringify(data));
     setTransactions(data);
   };
 
-  /* 🔹 Add Income */
+
   const addIncome = (values) => {
     const newData = [
       ...transactions,
@@ -58,7 +57,7 @@ function Dashboard2() {
     setTransactions([]);
   };
 
-  /* 🔹 Totals */
+
   const income = transactions
     .filter((t) => t.type === "income")
     .reduce((a, b) => a + Number(b.amount), 0);
@@ -69,7 +68,7 @@ function Dashboard2() {
 
   const balance = income - expenses;
 
-  /* ================= LINE GRAPH ================= */
+
   let runningBalance = 0;
   const lineData = transactions.map((t) => {
     runningBalance += t.type === "income"
@@ -90,7 +89,7 @@ function Dashboard2() {
     point: { size: 4 },
   };
 
-  /* ================= PIE CHART ================= */
+
   const pieData = transactions
     .filter((t) => t.type === "expense")
     .reduce((acc, curr) => {
@@ -104,11 +103,10 @@ function Dashboard2() {
     data: pieData,
     angleField: "value",
     colorField: "category",
-    radius: 0.7, // smaller size
-    height: 280, // match line chart
+    radius: 0.7,
+    height: 280,
   };
 
-  /* ================= CSV Export ================= */
   const exportToCsv = () => {
     const csvContent = [
       ["Name", "Type", "Date", "Amount", "Tag"],
@@ -124,7 +122,6 @@ function Dashboard2() {
     link.click();
   };
 
-  /* ================= Add Transaction from CSV ================= */
   const addTransaction = (transaction, skipSave = false) => {
     const newData = [...transactions, transaction];
     if (!skipSave) {
@@ -134,7 +131,7 @@ function Dashboard2() {
     }
   };
 
-  /* ================= Fetch Transactions (refresh) ================= */
+
   const fetchTransactions = () => {
     const data = JSON.parse(localStorage.getItem("transactions")) || [];
     setTransactions(data);
@@ -144,7 +141,7 @@ function Dashboard2() {
     <>
       <Header />
       <div style={{ padding: "2rem" }}>
-        {/* ================= 3 CARDS ================= */}
+     
         <Row gutter={16}>
           <Col span={8}>
             <Card>
