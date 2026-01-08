@@ -6,6 +6,7 @@ import Header from "../Components/Header";
 import AddExpenseModal from "../Components/AddExpenseModal";
 import AddIncomeModal from "../Components/AddIncomeModal";
 import TransactionSearch from "../Components/TransactionSearch";
+import "./Dashboard2.css";
 
 function Dashboard2() {
   const [transactions, setTransactions] = useState([]);
@@ -37,7 +38,6 @@ function Dashboard2() {
     setOpenIncome(false);
   };
 
-  /* 🔹 Add Expense */
   const addExpense = (values) => {
     const newData = [
       ...transactions,
@@ -51,7 +51,6 @@ function Dashboard2() {
     setOpenExpense(false);
   };
 
-  /* 🔹 Reset */
   const resetBalance = () => {
     localStorage.removeItem("transactions");
     setTransactions([]);
@@ -140,72 +139,73 @@ function Dashboard2() {
   return (
     <>
       <Header />
-      <div style={{ padding: "2rem" }}>
-     
-        <Row gutter={16}>
-          <Col span={8}>
-            <Card>
-              <h3>Balance</h3>
-              <h1>₹ {balance}</h1>
-              <Button
-                onClick={resetBalance}
-                style={{ backgroundColor: "rgba(69, 59, 180, 0.911)", color: "#fff",width:"400px" }}
-              >
-                Reset Balance
-              </Button>
-            </Card>
-          </Col>
-
-          <Col span={8}>
-            <Card>
-              <h3>Total Income</h3>
-              <h1>₹ {income}</h1>
-              <Button
-                type="primary"
-                onClick={() => setOpenIncome(true)}
-                style={{ backgroundColor: "rgba(69, 59, 180, 0.911)", color: "#fff",width:"400px" }}
-              >
-                Add Income
-              </Button>
-            </Card>
-          </Col>
-
-          <Col span={8}>
-            <Card>
-              <h3>Total Expenses</h3>
-              <h1>₹ {expenses}</h1>
-              <Button
-                type="primary"
-                danger
-                onClick={() => setOpenExpense(true)}
-                style={{ backgroundColor: "rgba(69, 59, 180, 0.911)", color: "#fff", border: "none",width:"400px"}}
-              >
-                Add Expense
-              </Button>
-            </Card>
-          </Col>
-        </Row>
-
-      
-        {transactions.length > 0 && (
-          <Row gutter={16} style={{ marginTop: "2rem" }}>
-            <Col span={16}>
-              <Card>
-                <h2>Balance Over Time</h2>
-                <Line {...lineConfig} />
+      <div className="dashboard-container">
+        <div className="balance-section">
+          <Row gutter={16}>
+            <Col xs={24} sm={8}>
+              <Card className="balance-card">
+                <h3>Balance</h3>
+                <h1>₹ {balance}</h1>
+                <Button
+                  onClick={resetBalance}
+                  className="reset-btn"
+                >
+                  Reset Balance
+                </Button>
               </Card>
             </Col>
 
-            <Col span={8}>
-              <Card>
-                <h2>Expense Distribution</h2>
-                <Pie {...pieConfig} />
+            <Col xs={24} sm={8}>
+              <Card className="income-card">
+                <h3>Total Income</h3>
+                <h1>₹ {income}</h1>
+                <Button
+                  type="primary"
+                  onClick={() => setOpenIncome(true)}
+                  className="add-income-btn"
+                >
+                  Add Income
+                </Button>
+              </Card>
+            </Col>
+
+            <Col xs={24} sm={8}>
+              <Card className="expense-card">
+                <h3>Total Expenses</h3>
+                <h1>₹ {expenses}</h1>
+                <Button
+                  type="primary"
+                 
+                  onClick={() => setOpenExpense(true)}
+                  className="add-expense-btn"
+                >
+                  Add Expense
+                </Button>
               </Card>
             </Col>
           </Row>
+        </div>
+
+        {transactions.length > 0 && (
+          <div className="charts-section">
+            <Row gutter={16}>
+              <Col xs={24} lg={16}>
+                <Card className="chart-card">
+                  <h2>Balance Over Time</h2>
+                  <Line {...lineConfig} />
+                </Card>
+              </Col>
+
+              <Col xs={24} lg={8}>
+                <Card className="chart-card">
+                  <h2>Expense Distribution</h2>
+                  <Pie {...pieConfig} />
+                </Card>
+              </Col>
+            </Row>
+          </div>
         )}
 
-    
         <AddIncomeModal
           open={openIncome}
           onCancel={() => setOpenIncome(false)}
