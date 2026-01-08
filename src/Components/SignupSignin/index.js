@@ -18,8 +18,6 @@ function SignupSigninComponents() {
 
   const navigate = useNavigate();
   const [user, authLoading] = useAuthState(auth);
-
-  // Redirect if already logged in
   useEffect(() => {
     if (!authLoading && user) {
       navigate("/dashboard");

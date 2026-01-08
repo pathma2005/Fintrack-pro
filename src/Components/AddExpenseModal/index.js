@@ -28,7 +28,7 @@ function AddExpenseModal({ open, onCancel, onFinish, onDelete }) {
       onCancel={onCancel}
       footer={[
         <Button danger key="delete" onClick={onDelete}>
-          Delete Income
+          Delete Expenses
         </Button>,
         <Button key="cancel" onClick={onCancel}>
           Cancel
@@ -39,16 +39,15 @@ function AddExpenseModal({ open, onCancel, onFinish, onDelete }) {
       ]}
     >
       <Form form={form} layout="vertical" onFinish={handleFinish}>
-        {/* Income Name */}
-        <Form.Item
+    <Form.Item
           name="name"
-          label="Income Name"
-          rules={[{ required: true, message: "Please enter income name" }]}
+          label="Expense Name"
+          rules={[{ required: true, message: "Please enter expense name" }]}
         >
-          <Input placeholder="e.g., Salary" />
+          <Input placeholder="e.g., Grocery" />
         </Form.Item>
 
-        {/* Amount */}
+    
         <Form.Item
           name="amount"
           label="Amount"
@@ -57,7 +56,7 @@ function AddExpenseModal({ open, onCancel, onFinish, onDelete }) {
           <InputNumber min={0} style={{ width: "100%" }} />
         </Form.Item>
 
-        {/* Date */}
+   
         <Form.Item
           name="date"
           label="Date"
@@ -66,7 +65,7 @@ function AddExpenseModal({ open, onCancel, onFinish, onDelete }) {
           <DatePicker style={{ width: "100%" }} />
         </Form.Item>
 
-        {/* Tag */}
+   
         <Form.Item
           name="tag"
           label="Tag"
@@ -85,14 +84,15 @@ function AddExpenseModal({ open, onCancel, onFinish, onDelete }) {
           </Select>
         </Form.Item>
 
-        {/* Other Tag */}
+       
         {selectedTag === "Other" && (
           <Form.Item
+            name="otherTag"
             label="Other Type"
             rules={[{ required: true, message: "Please enter type" }]}
           >
             <Input
-              placeholder="Enter custom income type"
+              placeholder="Enter custom expense type"
               value={otherTag}
               onChange={(e) => setOtherTag(e.target.value)}
             />

@@ -1,7 +1,5 @@
-import React from "react";
-import "./style.css";
 import { Card, Row, Button } from "antd";
-
+import "./style.css"
 function Cards({
   balance,
   income,
@@ -13,7 +11,7 @@ function Cards({
   openSavings,
   openTransactions,
   reset,
-}){
+}) {
   return (
     <div>
       <Row style={{ gap: "32px", justifyContent: "center" }}>
@@ -61,7 +59,6 @@ function Cards({
       </Row>
     </div>
   );
-
 }
-export default Cards;
 
+export default Cards;

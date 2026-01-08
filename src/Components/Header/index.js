@@ -33,12 +33,11 @@ function Header({ showLogout = true, showArrow = false }) {
     <div className="navbar">
       <ToastContainer position="top-right" autoClose={3000} />
 
-      {/* Logo */}
       <p className="logo">FinTrack</p>
 
-      {/* Right side actions */}
+    
       <div className="header-actions">
-        {/* Only show arrow if prop is true */}
+      
 {showArrow && (
   <FaLongArrowAltRight
     className="arrow-icon"
@@ -46,7 +45,7 @@ function Header({ showLogout = true, showArrow = false }) {
   />
 )}
 
-        {/* Logout */}
+     
         {user && showLogout && (
           <div className="user-logout" onClick={logoutfun}>
             <img src={user.photoURL} alt="User" className="user-photo" />

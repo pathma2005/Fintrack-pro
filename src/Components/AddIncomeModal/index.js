@@ -39,7 +39,7 @@ function AddIncomeModal({ open, onCancel, onFinish, onDelete }) {
       ]}
     >
       <Form form={form} layout="vertical" onFinish={handleFinish}>
-        {/* Income Name */}
+   
         <Form.Item
           name="name"
           label="Income Name"
@@ -48,7 +48,7 @@ function AddIncomeModal({ open, onCancel, onFinish, onDelete }) {
           <Input placeholder="e.g., Salary" />
         </Form.Item>
 
-        {/* Amount */}
+    
         <Form.Item
           name="amount"
           label="Amount"
@@ -57,7 +57,6 @@ function AddIncomeModal({ open, onCancel, onFinish, onDelete }) {
           <InputNumber min={0} style={{ width: "100%" }} />
         </Form.Item>
 
-        {/* Date */}
         <Form.Item
           name="date"
           label="Date"
@@ -66,7 +65,7 @@ function AddIncomeModal({ open, onCancel, onFinish, onDelete }) {
           <DatePicker style={{ width: "100%" }} />
         </Form.Item>
 
-        {/* Tag */}
+    
         <Form.Item
           name="tag"
           label="Tag"
@@ -83,7 +82,7 @@ function AddIncomeModal({ open, onCancel, onFinish, onDelete }) {
           </Select>
         </Form.Item>
 
-        {/* Other Tag */}
+     
         {selectedTag === "Other" && (
           <Form.Item
             label="Other Type"

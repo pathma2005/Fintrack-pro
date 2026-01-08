@@ -23,7 +23,6 @@ function Dashboard() {
 
   const balance = income - expenses;
 
-  // 🔹 Load from localStorage
   useEffect(() => {
     setTransactions(JSON.parse(localStorage.getItem("transactions")) || []);
     setIncome(JSON.parse(localStorage.getItem("income")) || 0);
@@ -31,7 +30,7 @@ function Dashboard() {
     setSavings(JSON.parse(localStorage.getItem("savings")) || 0);
   }, []);
 
-  // 🔹 Save to localStorage
+
   useEffect(() => {
     localStorage.setItem("transactions", JSON.stringify(transactions));
     localStorage.setItem("income", JSON.stringify(income));
@@ -39,7 +38,7 @@ function Dashboard() {
     localStorage.setItem("savings", JSON.stringify(savings));
   }, [transactions, income, expenses, savings]);
 
-  // 🔹 Add Income / Expense
+
   const onAddTransaction = (values, type) => {
     const transaction = {
       name: values.name,
@@ -58,7 +57,7 @@ function Dashboard() {
     setShowExpenses(false);
   };
 
-  // 🔹 Edit Transaction
+
   const onEditTransaction = (index, updatedTransaction) => {
     setTransactions((prev) => {
       const list = [...prev];
@@ -79,7 +78,7 @@ function Dashboard() {
     });
   };
 
-  // 🔹 Reset All
+
   const resetAll = () => {
     setIncome(0);
     setExpenses(0);
@@ -93,7 +92,7 @@ function Dashboard() {
     const spendingData = {};
 
     transactions.forEach((transaction) => {
-      if (!transaction.amount || isNaN(transaction.amount)) return; // Skip invalid amounts
+      if (!transaction.amount || isNaN(transaction.amount)) return; 
       const monthYear = moment(transaction.date).format("MMM YYYY");
       const tag = transaction.tag;
 
@@ -123,7 +122,7 @@ function Dashboard() {
     const spendingDataArray = Object.keys(spendingData).map((key) => ({
       category: key,
       value: spendingData[key],
-    })).filter(item => !isNaN(item.value)); // Filter out NaN values
+    })).filter(item => !isNaN(item.value)); 
 
     return { balanceData, spendingDataArray };
   };
@@ -134,7 +133,7 @@ function Dashboard() {
     data: balanceData,
     xField: "month",
     yField: "balance",
-    color: (data) => (data.balance >= 0 ? "#52c41a" : "#ff4d4f"), // Green for positive, red for negative
+    color: (data) => (data.balance >= 0 ? "#52c41a" : "#ff4d4f"), 
     tooltip: {
       showMarkers: true,
       showCrosshairs: true,
@@ -152,15 +151,6 @@ function Dashboard() {
     tooltip: {
       showTitle: true,
       showMarkers: true,
-    },
-    label: {
-      type: "outer",
-      offset: 10,
-      content: ({ value }) => `${value}`,
-      style: {
-        textAlign: "center",
-        fontSize: 14,
-      },
     },
     legend: {
       position: "bottom",
@@ -192,7 +182,7 @@ function Dashboard() {
         reset={resetAll}
       />
 
-      {/* Income Modal */}
+   
       <AddIncomeModal
         open={showIncome}
         onCancel={() => setShowIncome(false)}
@@ -206,7 +196,7 @@ function Dashboard() {
         }}
       />
 
-      {/* Expense Modal */}
+   
       <AddExpenseModal
         open={showExpenses}
         onCancel={() => setShowExpenses(false)}
@@ -220,7 +210,7 @@ function Dashboard() {
         }}
       />
 
-      {/* Savings Modal */}
+   
       <AddSavingsModal
         open={showSavings}
         onCancel={() => setShowSavings(false)}
@@ -247,7 +237,7 @@ function Dashboard() {
         }}
       />
 
-      {/* Transactions Modal */}
+
       <TransactionModal
         open={showTransaction}
         onCancel={() => setShowTransaction(false)}
@@ -266,7 +256,7 @@ function Dashboard() {
 
             <Card bordered={true} style={{ ...cardStyle, flex: 0.45 }}>
               <h2>Total Spending</h2>
-              {spendingDataArray.length == 0 ? (
+              {spendingDataArray.length === 0 ? (
                 <p>Seems like you haven't spent anything till now...</p>
               ) : (
                 <Pie {...{ ...spendingConfig, data: spendingDataArray }} />
