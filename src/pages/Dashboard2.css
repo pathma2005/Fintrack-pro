@@ -1,0 +1,173 @@
+
+.dashboard-container {
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+
+.balance-section {
+  margin-bottom: 2rem;
+}
+
+.balance-card,
+.income-card,
+.expense-card {
+  text-align: center;
+  border-radius: 12px;
+}
+
+.balance-card h1,
+.income-card h1,
+.expense-card h1 {
+  margin: 0.5rem 0 1rem;
+}
+
+.reset-btn,
+.add-income-btn {
+  background-color: rgba(69, 59, 180, 0.911) ;
+  border: none !important;
+  width: 100%;
+  color:#fff;
+}
+
+.add-expense-btn {
+  width: 100%;
+  background-color: rgba(69, 59, 180, 0.911)  ;
+}
+
+.charts-section {
+  margin-top: 2rem;
+}
+
+.chart-card {
+  border-radius: 12px;
+  text-align: center;
+}
+
+
+.my-table {
+  margin-top: 2rem;
+}
+
+.input-flex {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #f4f4f4;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.input-flex input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+}
+
+.btn {
+  background-color: rgba(69, 59, 180, 0.911);
+  color: white;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-blue {
+  background-color: rgba(69, 59, 180, 0.911);
+}
+
+
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 1rem;
+  }
+
+  .balance-section .ant-col {
+    margin-bottom: 1rem;
+  }
+
+  .charts-section .ant-col {
+    margin-bottom: 1rem;
+  }
+
+  .chart-card {
+    padding: 0.8rem;
+  }
+
+  .my-table {
+    padding: 0;
+  }
+
+  .input-radio {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .input-radio .ant-radio-button-wrapper {
+    flex: 1;
+    text-align: center;
+  }
+
+  .my-table > div > div {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .my-table h2 {
+    text-align: center;
+  }
+
+  .my-table table {
+    font-size: 13px;
+  }
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.ant-row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.dashboard-container {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+
+.ant-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.ant-table {
+  width: 100%;
+}
+
+
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .ant-col {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .my-table {
+    overflow-x: auto;
+  }
+}
+
+
