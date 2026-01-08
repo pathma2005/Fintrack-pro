@@ -1,48 +1,57 @@
-import React from "react";
-import "./style.css";
 import { Card, Row, Button } from "antd";
-
-function Cards() {
+import "./style.css"
+function Cards({
+  balance,
+  income,
+  expenses,
+  savings,
+  transactionsCount,
+  openIncome,
+  openExpense,
+  openSavings,
+  openTransactions,
+  reset,
+}) {
   return (
     <div>
       <Row style={{ gap: "32px", justifyContent: "center" }}>
         <Card className="my-card" title="Current Balance">
-          <p>₹0</p>
-          <Button className="btn" type="primary">
+          <p>₹{balance}</p>
+          <Button className="btn" type="primary" onClick={reset}>
             Reset Balance
           </Button>
         </Card>
 
         <Card className="my-card" title="Total Income">
-          <p>₹0</p>
-          <Button className="btn" type="primary">
+          <p>₹{income}</p>
+          <Button className="btn" type="primary" onClick={openIncome}>
             Add Income
           </Button>
         </Card>
 
-        <Card className="my-card" title="Total Expenses">
-          <p>₹0</p>
-          <Button className="btn" type="primary">
+        <Card className="my-card" title="Add Expenses">
+          <p>₹{expenses}</p>
+          <Button className="btn" type="primary" onClick={openExpense}>
             Total Expenses
           </Button>
         </Card>
 
         <Card className="my-card" title="Monthly Savings">
-          <p>₹0</p>
-          <Button className="btn" type="primary">
+          <p>₹{savings}</p>
+          <Button className="btn" type="primary" onClick={openSavings}>
             Update Savings
           </Button>
         </Card>
 
         <Card className="my-card" title="Recent Transactions">
-          <p>₹0</p>
-          <Button className="btn" type="primary">
+          <p>₹{transactionsCount}</p>
+          <Button className="btn" type="primary" onClick={openTransactions}>
             View Transactions
           </Button>
         </Card>
 
         <Card className="my-card" title="Budget Overview">
-          <p>₹0</p>
+          <p>{balance >= 0 ? "Good" : "Alert"}</p>
           <Button className="btn" type="primary">
             Manage Overview
           </Button>
@@ -53,5 +62,3 @@ function Cards() {
 }
 
 export default Cards;
-
-

@@ -4,14 +4,14 @@
   background-color: rgba(69, 59, 180, 0.911);
   backdrop-filter: blur(50px);
   padding: 1rem 1.5rem;
+
   position: sticky;
   top: 0;
-  left: 0;
+  z-index: 100;
+
   display: flex;
   align-items: center;
-  z-index: 100;
   justify-content: center;
-  position: relative;    
 }
 
 .logo {
@@ -19,17 +19,52 @@
   font-weight: 500;
   font-size: 1.2rem;
   margin: 0;
-  padding: 5px;
-  text-align: center;
 }
-.link {
-  opacity: 0.8;
-  cursor: pointer;
+.header-actions {
   position: absolute;
   right: 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.nav-icon {
+  font-size:35px;
+  color: white;
+  cursor: pointer;
 }
 
-.link:hover {
-  opacity: 1;
-  transition: all 0.3s;
+.nav-icon:hover {
+  color: #ffd700;
+  transform: scale(1.2);
+  transition: all 0.2s ease;
 }
+.arrow-icon{
+  cursor: pointer;
+  font-size: 35px;
+  color:#fff;
+}
+.user-logout {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.user-photo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.logout-text {
+  font-size: 0.9rem;
+  color: rgb(216, 209, 209);
+  font-weight: 500;
+}
+
+.user-logout:hover {
+  opacity: 0.85;
+}
+

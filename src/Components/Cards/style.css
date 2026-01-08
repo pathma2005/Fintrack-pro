@@ -21,11 +21,9 @@ gap:20px;
    font-weight: bold;
 }
 .my-card .ant-card-head-title {
-  font-size:20px;
-  font-weight: 600;
-  color:#000;
- text-align: center;
- align-items: center;
+  font-size:15px;
+  font-weight:700;
+  color: #000;
 }
 
 
@@ -37,13 +35,12 @@ gap:20px;
   font-size:20px;
   font-weight:900;
  margin: 1rem 0;
- color:#000;
 }
 .btn {
   width: 100%;
   background-color: rgba(69, 59, 180, 0.911);
   color: #fff;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bold;
   margin-top: 1rem;
    font-family: "Montserrat", sans-serif;
