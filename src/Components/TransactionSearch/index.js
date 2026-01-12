@@ -198,7 +198,7 @@ const TransactionSearch = ({
         </Select>
       </div>
 
-      {/* TABLE */}
+    
       <Table
         columns={columns}
         dataSource={dataSource}
@@ -209,5 +209,7 @@ const TransactionSearch = ({
 };
 
 export default TransactionSearch;
+
+
 
 
