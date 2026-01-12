@@ -48,8 +48,14 @@ function Header({ showLogout = true, showArrow = false }) {
      
         {user && showLogout && (
           <div className="user-logout" onClick={logoutfun}>
-            <img src={user.photoURL} alt="User" className="user-photo" />
-            <span className="logout-text">Logout</span>
+            {user.photoURL ? (
+              <img src={user.photoURL} alt="User" className="user-photo" />
+            ) : (
+              <div className="user-avatar">
+                {user.displayName ? user.displayName.charAt(0).toUpperCase() : (user.email ? user.email.charAt(0).toUpperCase() : 'U')}
+              </div>
+            )}
+            <span className="logout-text">{user.email}</span>
           </div>
         )}
       </div>
