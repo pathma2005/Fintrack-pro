@@ -58,6 +58,19 @@
   object-fit: cover;
 }
 
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #ffd700;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
 .logout-text {
   font-size: 0.9rem;
   color: rgb(216, 209, 209);
