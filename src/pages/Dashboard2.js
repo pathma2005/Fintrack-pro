@@ -138,7 +138,7 @@ function Dashboard2() {
 
   return (
     <>
-      <Header />
+      <Header showLeftArrow={true} />
       <div className="dashboard-container">
         <div className="balance-section">
           <Row gutter={16}>
@@ -232,3 +232,7 @@ function Dashboard2() {
 }
 
 export default Dashboard2;
+
+
+
+
