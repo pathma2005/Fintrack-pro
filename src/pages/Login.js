@@ -122,6 +122,9 @@ function Login() {
         <p className="forgot-password" onClick={handleForgotPassword}>
           Forgot password?
         </p>
+        <p className="spam-note">
+          Note: Password reset emails may go to your spam folder.
+        </p>
       </div>
     </div>
   );
