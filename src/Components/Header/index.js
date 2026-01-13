@@ -5,10 +5,12 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
 import { FaLongArrowAltRight } from "react-icons/fa";
+import { FaArrowLeftLong } from "react-icons/fa6";
 import "react-toastify/dist/ReactToastify.css";
+import { getGravatarUrl } from "../../utils";
 import "./style.css";
 
-function Header({ showLogout = true, showArrow = false }) {
+function Header({ showLogout = true, showArrow = false, showLeftArrow = false }) {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
 
@@ -33,6 +35,13 @@ function Header({ showLogout = true, showArrow = false }) {
     <div className="navbar">
       <ToastContainer position="top-right" autoClose={3000} />
 
+      {showLeftArrow && (
+        <FaArrowLeftLong
+          className="left-arrow-icon"
+          onClick={() => navigate("/dashboard")}
+        />
+      )}
+
       <p className="logo">FinTrack</p>
 
     
@@ -48,7 +57,7 @@ function Header({ showLogout = true, showArrow = false }) {
      
         {user && showLogout && (
           <div className="user-logout" onClick={logoutfun}>
-            <img src={user.photoURL} alt="User" className="user-photo" />
+            <img src={user.photoURL || getGravatarUrl(user.email) || "/assets/user.svg"} alt="User" className="user-photo" />
             <span className="logout-text">Logout</span>
           </div>
         )}
