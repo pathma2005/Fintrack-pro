@@ -1,3 +1,0 @@
-- [x] Remove label property from pieConfig in Dashboard2.js to fix the "Unknown Component: shape.outer" error
-- [x] Import Header component in Dashboard2.js
-- [x] Add <Header /> at the top of the return statement in Dashboard2.js
