@@ -7,7 +7,6 @@ import { ToastContainer, toast } from "react-toastify";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import "react-toastify/dist/ReactToastify.css";
-import { getGravatarUrl } from "../../utils";
 import "./style.css";
 
 function Header({ showLogout = true, showArrow = false, showLeftArrow = false }) {
@@ -31,10 +30,12 @@ function Header({ showLogout = true, showArrow = false, showLeftArrow = false })
     return <div className="navbar">Checking user...</div>;
   }
 
+  const userInitial = user?.email
+    ? user.email.charAt(0).toUpperCase()
+    : "?";
+
   return (
     <div className="navbar">
-      <ToastContainer position="top-right" autoClose={3000} />
-
       {showLeftArrow && (
         <FaArrowLeftLong
           className="left-arrow-icon"
@@ -42,31 +43,55 @@ function Header({ showLogout = true, showArrow = false, showLeftArrow = false })
         />
       )}
 
-      <p className="logo">FinTrack</p>
+      <div className="nav-center">
+        <p className="logo">FinTrack</p>
+      </div>
 
-    
       <div className="header-actions">
-      
-{showArrow && (
-  <FaLongArrowAltRight
-    className="arrow-icon"
-    onClick={() => navigate("/dashboard2")}
-  />
-)}
+        {showArrow && (
+          <FaLongArrowAltRight
+            className="arrow-icon"
+            onClick={() => navigate("/dashboard2")}
+          />
+        )}
 
-     
         {user && showLogout && (
           <div className="user-logout" onClick={logoutfun}>
-            <img src={user.photoURL || getGravatarUrl(user.email) || "/assets/user.svg"} alt="User" className="user-photo" />
+            {user.photoURL ? (
+              <img
+                src={user.photoURL}
+                alt="User"
+                className="user-photo"
+              />
+            ) : (
+              <div className="user-avatar">
+                {userInitial}
+              </div>
+            )}
             <span className="logout-text">Logout</span>
           </div>
         )}
       </div>
+
+
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 }
 
 export default Header;
+
 
 
 
